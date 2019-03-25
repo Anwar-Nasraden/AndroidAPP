@@ -24,14 +24,14 @@ namespace TimetableAPI.Controllers
         [HttpGet]
         public IEnumerable<Timetable> GetTimetable()
         {
-            return _context.Timetable;
-        }
-
-        [HttpGet("rooms")]
-        public IEnumerable<Timetable> GetRooms()
-        {
             return _context.Timetable.Include(p => p.Room).Include(c => c.Calendar).ToList();
         }
+
+        //[HttpGet("rooms")]
+        //public IEnumerable<Timetable> GetRooms()
+        //{
+        //    return _context.Timetable.Include(p => p.Room).Include(c => c.Calendar).ToList();
+        //}
 
 
         [HttpGet("rooms/{roomNo}")]
