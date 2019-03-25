@@ -57,7 +57,7 @@ namespace TimetableAPI.Controllers
         }
 
         //return rooms for a specific day
-        [HttpGet("room/{roomNo}/{day}")]
+        [HttpGet("roomByDay/{roomNo}/{day}")]
         public IEnumerable<Timetable> GetRoomByDay(int roomNo, string day)
         {
 
