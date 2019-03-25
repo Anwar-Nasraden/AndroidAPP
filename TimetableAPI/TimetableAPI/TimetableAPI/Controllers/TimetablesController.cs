@@ -55,6 +55,22 @@ namespace TimetableAPI.Controllers
             return rooms;
 
         }
+
+        //return rooms for a specific day
+        [HttpGet("room/{day}/{roomNo}")]
+        public IEnumerable<Timetable> GetRoomByDay(string day, int roomNo)
+        {
+
+            var room = _context.Timetable.Include(p => p.Room).Include(c => c.Calendar).ToList();
+
+            var rooms = room.Where(p => p.Calendar.DayofWeek == day).Where(c=> c.Room.Room_no == roomNo);
+            return rooms;
+
+        }
+        
+
+
+
         // public Timetable Timetable { get; set; }
 
         //[HttpGet("{roomIn}")]
