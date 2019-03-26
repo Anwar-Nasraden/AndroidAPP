@@ -14,6 +14,6 @@ namespace TimetableAPI.Models
         }
 
         public DbSet<TimetableAPI.Models.Timetable> Timetable { get; set; }
-        public DbSet<TimetableAPI.Models.Room> Rooms { get; set; }
+       
     }
 }

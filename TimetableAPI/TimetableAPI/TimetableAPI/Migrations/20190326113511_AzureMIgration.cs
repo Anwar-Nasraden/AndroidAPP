@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TimetableAPI.Migrations
 {
-    public partial class azureMigration : Migration
+    public partial class AzureMIgration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace TimetableAPI.Migrations
                 name: "Calendar",
                 columns: table => new
                 {
-                    Claendar_Id = table.Column<int>(nullable: false)
+                    Calendar_Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CalendarDate = table.Column<DateTime>(nullable: false),
                     DayofWeek = table.Column<string>(nullable: true),
@@ -20,7 +20,7 @@ namespace TimetableAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Calendar", x => x.Claendar_Id);
+                    table.PrimaryKey("PK_Calendar", x => x.Calendar_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +30,7 @@ namespace TimetableAPI.Migrations
                     Room_Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Room_no = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +45,6 @@ namespace TimetableAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     StartTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),
-                    CalendarClaendar_Id = table.Column<int>(nullable: true),
                     Calendar_Id = table.Column<int>(nullable: false),
                     Room_Id = table.Column<int>(nullable: false)
                 },
@@ -53,11 +52,11 @@ namespace TimetableAPI.Migrations
                 {
                     table.PrimaryKey("PK_Timetable", x => x.Timetable_Id);
                     table.ForeignKey(
-                        name: "FK_Timetable_Calendar_CalendarClaendar_Id",
-                        column: x => x.CalendarClaendar_Id,
+                        name: "FK_Timetable_Calendar_Calendar_Id",
+                        column: x => x.Calendar_Id,
                         principalTable: "Calendar",
-                        principalColumn: "Claendar_Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Calendar_Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Timetable_Room_Room_Id",
                         column: x => x.Room_Id,
@@ -67,9 +66,9 @@ namespace TimetableAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Timetable_CalendarClaendar_Id",
+                name: "IX_Timetable_Calendar_Id",
                 table: "Timetable",
-                column: "CalendarClaendar_Id");
+                column: "Calendar_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Timetable_Room_Id",

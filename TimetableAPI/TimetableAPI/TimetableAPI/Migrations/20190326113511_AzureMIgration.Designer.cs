@@ -10,8 +10,8 @@ using TimetableAPI.Models;
 namespace TimetableAPI.Migrations
 {
     [DbContext(typeof(TimetableAPIContext))]
-    [Migration("20190322225755_azureMigration")]
-    partial class azureMigration
+    [Migration("20190326113511_AzureMIgration")]
+    partial class AzureMIgration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace TimetableAPI.Migrations
 
             modelBuilder.Entity("TimetableAPI.Models.Calendar", b =>
                 {
-                    b.Property<int>("Claendar_Id")
+                    b.Property<int>("Calendar_Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,7 +33,7 @@ namespace TimetableAPI.Migrations
 
                     b.Property<int>("WeekNumber");
 
-                    b.HasKey("Claendar_Id");
+                    b.HasKey("Calendar_Id");
 
                     b.ToTable("Calendar");
                 });
@@ -44,9 +44,9 @@ namespace TimetableAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
-
                     b.Property<int>("Room_no");
+
+                    b.Property<bool>("Status");
 
                     b.HasKey("Room_Id");
 
@@ -59,8 +59,6 @@ namespace TimetableAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CalendarClaendar_Id");
-
                     b.Property<int>("Calendar_Id");
 
                     b.Property<DateTime>("EndTime");
@@ -71,7 +69,7 @@ namespace TimetableAPI.Migrations
 
                     b.HasKey("Timetable_Id");
 
-                    b.HasIndex("CalendarClaendar_Id");
+                    b.HasIndex("Calendar_Id");
 
                     b.HasIndex("Room_Id");
 
@@ -82,7 +80,8 @@ namespace TimetableAPI.Migrations
                 {
                     b.HasOne("TimetableAPI.Models.Calendar", "Calendar")
                         .WithMany()
-                        .HasForeignKey("CalendarClaendar_Id");
+                        .HasForeignKey("Calendar_Id")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TimetableAPI.Models.Room", "Room")
                         .WithMany()

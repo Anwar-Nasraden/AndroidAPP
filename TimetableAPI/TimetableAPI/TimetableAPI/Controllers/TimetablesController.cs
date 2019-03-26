@@ -20,6 +20,8 @@ namespace TimetableAPI.Controllers
             _context = context;
         }
 
+
+
         // GET: api/Timetables
         [HttpGet]
         public IEnumerable<Timetable> GetTimetable()
