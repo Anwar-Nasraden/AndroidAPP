@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimetableAPI.Models;
 
 namespace TimetableAPI.Migrations
 {
     [DbContext(typeof(TimetableAPIContext))]
-    partial class TimetableAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20190326164643_AzureMIgration2")]
+    partial class AzureMIgration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

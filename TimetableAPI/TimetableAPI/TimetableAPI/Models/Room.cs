@@ -11,6 +11,6 @@ namespace TimetableAPI.Models
         [Key]
         public int Room_Id { get; set; }
         public int Room_no { get; set; }
-        public Boolean Status { get; set; }
+        public Boolean IsBusy { get; set; }
     }
 }
