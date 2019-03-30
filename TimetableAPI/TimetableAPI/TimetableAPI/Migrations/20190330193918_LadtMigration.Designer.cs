@@ -10,8 +10,8 @@ using TimetableAPI.Models;
 namespace TimetableAPI.Migrations
 {
     [DbContext(typeof(TimetableAPIContext))]
-    [Migration("20190326164643_AzureMIgration2")]
-    partial class AzureMIgration2
+    [Migration("20190330193918_LadtMigration")]
+    partial class LadtMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

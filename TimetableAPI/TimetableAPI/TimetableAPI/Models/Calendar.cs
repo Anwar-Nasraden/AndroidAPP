@@ -16,8 +16,7 @@ namespace TimetableAPI.Models
 
         public Calendar()
         {
-            this.DayofWeek = this.CalendarDate.DayOfWeek.ToString();
-            Console.WriteLine(this.DayofWeek);
+            this.DayofWeek = this.CalendarDate.DayOfWeek.ToString();          
             
         }
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TimetableAPI.Migrations
 {
-    public partial class AzureMIgration : Migration
+    public partial class LadtMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +30,7 @@ namespace TimetableAPI.Migrations
                     Room_Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Room_no = table.Column<int>(nullable: false),
-                    Status = table.Column<bool>(nullable: false)
+                    IsBusy = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
